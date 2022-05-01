@@ -1,13 +1,14 @@
-
+import './header.scss'
+import HeaderTime from './atoms/time/time';
 
 const Header = () => {
-   return (
-      <div className="header">
-      <div className="header__app">eDayTools</div>
-      <div className="header__time">Сейчас 20:00</div>
-      <div className="header__login">Войти</div>
-      </div>
-   )
-}
+	return (
+		<div className="header">
+			<div className="header__app">eDayTools</div>
+			<HeaderTime/>
+			<div className="header__login">Привет, userName</div>
+		</div>
+	);
+};
 
 export default Header;
