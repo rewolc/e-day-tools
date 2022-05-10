@@ -2,7 +2,7 @@ import getHours from "date-fns/getHours";
 import getMinutes from "date-fns/getMinutes";
 import { useState, useEffect } from "react";
 import { timeType } from "./timeType";
-const HeaderTime = () => {
+const TimeInHeader = () => {
 	const [time, updateTime] = useState<timeType>({
 		hours: getHours(new Date()),
 		minutes: getMinutes(new Date()),
@@ -27,4 +27,4 @@ const HeaderTime = () => {
 	);
 };
 
-export default HeaderTime;
+export default TimeInHeader;

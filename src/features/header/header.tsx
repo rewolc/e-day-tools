@@ -1,12 +1,13 @@
 import './header.scss'
-import HeaderTime from './atoms/time/time';
-
+import TimeInHeader from './atoms/time/time';
+import { AuthInHeader } from './atoms/auth/auth';
+import { LogoInHeader } from './atoms/logo/logo';
 const Header = () => {
 	return (
 		<div className="header">
-			<div className="header__app">eDayTools</div>
-			<HeaderTime/>
-			<div className="header__login">Привет, userName</div>
+			<LogoInHeader/>
+			<TimeInHeader/>
+			<AuthInHeader/>
 		</div>
 	);
 };
