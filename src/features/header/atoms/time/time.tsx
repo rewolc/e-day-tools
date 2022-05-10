@@ -13,7 +13,7 @@ const TimeInHeader = () => {
 				hours: getHours(new Date()) < 10 ? '0' +  String(getHours(new Date())) : getHours(new Date()) , 
 				minutes: getMinutes(new Date()) < 10 ? '0' + String(getMinutes(new Date())) : getMinutes(new Date())
 			});
-		}, 30_000);
+		}, 3000);
 		return () => clearInterval();
 	}, []);
 
