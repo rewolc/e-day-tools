@@ -6,5 +6,14 @@ export const mainTools = [
 	{notebook : "Блокнот"},
 	{calculator :'Калькулятор'},
 ];
+
+export interface Tool {
+	wheather? : string, 
+	money? : string, 
+	calendar? : string, 
+	news? : string, 
+	notebook? : string, 
+	calculator? : string, 
+}
 	
 

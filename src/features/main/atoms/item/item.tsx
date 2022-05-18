@@ -1,17 +1,39 @@
 import "./item.scss";
+import { useSpring, animated } from "@react-spring/web";
+import { Tool } from "../../tools/tools";
 
-const Item: React.FC<{ value: any }> = ({ value }) => {
+const Item: React.FC<{
+	value: Tool;
+	index: number;
+	itemToChoose: React.Dispatch<number>;
+	show: boolean;
+}> = ({ value, index, itemToChoose, show }) => {
 	const wheather = require(`../../../../assets/${Object.keys(value)}.png`);
-	const style = {
+
+	const itemImg = {
 		backgroundImage: `url(${wheather})`,
-		backgroundSize: "40%",
+		backgroundSize: "30%",
 		backgroundPosition: " right 50% bottom 30%",
 		backgroundRepeat: "no-repeat",
+		cursor: !show ? "pointer" : "default",
+		// pointerEvents: !show ? "none" : "none",
 	};
+	const props = useSpring({
+		to: { opacity: 1 },
+		from: { opacity: 0 },
+		delay: show ? (6 - index) * 300 : index * 300,
+		reverse: show,
+		config: {
+			duration: 1000,
+		},
+	});
+
 	return (
-		<div className="item" style={style}>
-			<div className="item__name">{Object.values(value)}</div>
-		</div>
+		<animated.div style={props} onClick={() => itemToChoose(index)}>
+			<div className="item" style={itemImg}>
+				<div className="item__name">{Object.values(value)}</div>
+			</div>
+		</animated.div>
 	);
 };
 
