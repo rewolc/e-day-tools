@@ -1,0 +1,16 @@
+.table {
+	width: 300px;
+	margin: 0 10px;
+	border: 2px solid white;
+	border-radius: 10px;
+	&__name {
+		font-size: 25px;
+		text-align: center;
+	}
+	&__tasks {
+		background-color: rgb(255 255 255);
+		min-height: 400px;
+		margin: 0 7px 7px;
+		border-radius: 10px;
+	}
+}

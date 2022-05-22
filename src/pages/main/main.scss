@@ -1,9 +1,9 @@
 .main {
+	margin: 50px;
+	color: #0d0d0da1;
 	&__container {
-		padding: 30px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-      color: #0d0d0da1;
 	}
 }

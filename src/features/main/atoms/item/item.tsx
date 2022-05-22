@@ -1,22 +1,21 @@
 import "./item.scss";
 import { useSpring, animated } from "@react-spring/web";
 import { Tool } from "../../tools/tools";
-
+import { Link } from "react-router-dom";
 const Item: React.FC<{
 	value: Tool;
 	index: number;
 	itemToChoose: React.Dispatch<number>;
 	show: boolean;
 }> = ({ value, index, itemToChoose, show }) => {
-	const wheather = require(`../../../../assets/${Object.keys(value)}.png`);
+	const image = require(`../../../../assets/${Object.keys(value)}.png`);
 
 	const itemImg = {
-		backgroundImage: `url(${wheather})`,
+		backgroundImage: `url(${image})`,
 		backgroundSize: "30%",
 		backgroundPosition: " right 50% bottom 30%",
 		backgroundRepeat: "no-repeat",
-		cursor: !show ? "pointer" : "default",
-		// pointerEvents: !show ? "none" : "none",
+		cursor: show ? "default" : "pointer",
 	};
 	const props = useSpring({
 		to: { opacity: 1 },
@@ -29,10 +28,12 @@ const Item: React.FC<{
 	});
 
 	return (
-		<animated.div style={props} onClick={() => itemToChoose(index)}>
-			<div className="item" style={itemImg}>
-				<div className="item__name">{Object.values(value)}</div>
-			</div>
+		<animated.div style={props} onClick={() => !show && itemToChoose(index)}>
+			<Link to={`${Object.keys(value)}`} type="text/css">
+				<div className="item" style={itemImg}>
+					<div className="item__name">{Object.values(value)}</div>
+				</div>
+			</Link>
 		</animated.div>
 	);
 };

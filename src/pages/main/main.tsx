@@ -8,15 +8,15 @@ const Main = () => {
 	return (
 		<div className="main">
 			<div className="main__container">
-				{mainTools.map((value, indx) => (
-					<Item
-						value={value}
-						index={indx}
-						key={indx}
-						itemToChoose={itemToChoose}
-						show={chosen !== indx && chosen !== -1}
-					/>
-				))}
+			{mainTools.map((value, indx) => (
+				<Item
+					value={value}
+					index={indx}
+					key={indx}
+					itemToChoose={itemToChoose}
+					show={chosen !== indx && chosen !== -1}
+				/>
+			))}
 			</div>
 		</div>
 	);
