@@ -1,14 +1,19 @@
-import { useSpring, animated, config } from "@react-spring/web";
+import { animated, config, useSpring } from "@react-spring/web";
+import React, { FC } from "react";
 
-const AnimatedNumber: React.FC<{ time: number | string }> = ({ time }) => {
-	const { number } = useSpring({
-		from: { number: 0 },
-		number: +time,
-		delay: 200,
-		config: config.molasses,
-	});
+type Props = {
+  time: number | string;
+};
 
-	return <animated.span>{number.to((n) => n.toFixed(0))}</animated.span>;
+const AnimatedNumber: FC<Props> = ({ time }) => {
+  const { number } = useSpring({
+    from: { number: 0 },
+    number: +time,
+    delay: 200,
+    config: config.molasses,
+  });
+
+  return <animated.span>{number.to((n) => n.toFixed(0))}</animated.span>;
 };
 
 export default AnimatedNumber;

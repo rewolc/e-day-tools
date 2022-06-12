@@ -21,6 +21,8 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-trailing-spaces": "error"
+    "no-unused-vars": "off",
+    "no-unexpected-multiline": "error",
+    "newline-before-return": "error"
   }
 }
