@@ -4,16 +4,15 @@ import { TTable, TTask } from "../../table-names";
 import Task from "../task/task";
 import { Droppable } from "react-beautiful-dnd";
 
-type Props = { table: TTable };
+type Props = { table: TTable; tableId: string };
 
-const TDTable: FC<Props> = ({ table }) => {
+const TDTable: FC<Props> = ({ table, tableId }) => {
   const { name, tasks } = table;
 
   return (
     <div className="table">
       <div className="table__name">{name as String}</div>
-
-      <Droppable droppableId={name as string} key={name as string}>
+      <Droppable droppableId={tableId} key={tableId}>
         {(provided, snapshot) => {
           return (
             <div
