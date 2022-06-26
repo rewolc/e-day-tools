@@ -9,10 +9,10 @@ const objHeader = {
 };
 const tasks: TTask = [
   { id: uuid(), header: objHeader, description: "Сделать это" },
-  { id: uuid(), header: "Second task", description: "Сделать это" },
-  { id: uuid(), header: "Third task", description: "Сделать это" },
-  { id: uuid(), header: "Fourth task", description: "Сделать это" },
-  { id: uuid(), header: "Fifth task", description: " " },
+  { id: uuid(), header: "Second Task", description: "Сделать это" },
+  { id: uuid(), header: "Third Task", description: "Сделать это" },
+  { id: uuid(), header: "Fourth Task", description: "Сделать это" },
+  { id: uuid(), header: "Fifth Task", description: " " },
 ];
 export const tables: TTables = {
   all: {

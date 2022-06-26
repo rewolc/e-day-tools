@@ -65,6 +65,8 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "prettier": "^2.6.2"
   }
 }

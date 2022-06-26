@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { ToolOutlined } from "@ant-design/icons";
 import { IconStyles } from "../../../../antdStyles/iconStyles";
+import { ToolOutlined } from "@ant-design/icons";
 
 export const LogoInHeader: FC = () => {
   return (

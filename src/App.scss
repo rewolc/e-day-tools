@@ -1,5 +1,30 @@
 .container {
   background-color: #edeef0;
   min-height: 100vh;
+}
 
+.ant-btn {
+  border: 2px solid #e9eaed;
+  border-radius: 10px;
+  line-height: 100%;
+
+
+  .ant-btn-block {
+    border-radius: 10px;
+    color: #81e125;
+  }
+
+  &:hover, &:focus {
+    border-color: rgba(30, 235, 46, 0.32);
+    color: black;
+  }
+}
+
+.ant-btn-primary {
+  background: rgb(19 185 32 / 38%);
+
+  &:hover, &:focus {
+    background: white;
+    color: rgba(30, 235, 46, 0.65);
+  }
 }

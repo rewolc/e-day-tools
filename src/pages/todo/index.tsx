@@ -1,26 +1,24 @@
-import TDTable from "../../features/todo/atoms/table/table";
-import AddTask from "../../features/todo/atoms/add-task/add-task";
-import AddTaskModal from "../../features/todo/atoms/add-task-modal/add-task-modal";
-import { changeTable, todoTables } from "../../features/todo/table-names";
-import { DragDropContext } from "react-beautiful-dnd";
 import "./todo.scss";
 import React, { FC } from "react";
-import { useStore } from "effector-react";
+import TDTable from "../../features/ToDo/atoms/Table/table";
+import { AddTask } from "../../features/ToDo/atoms/AddTask/add-task";
+import { DragDropContext } from "react-beautiful-dnd";
+import { changeTable, todoTables } from "../../features/ToDo/table-names";
 import { dragEnd } from "./utils";
+import { useStore } from "effector-react";
 
 const ToDo: FC = () => {
   const columns = useStore(todoTables);
 
   return (
     <div className="main">
-      <AddTaskModal />
       <AddTask />
       <div className="main__container">
         <DragDropContext
           onDragEnd={(result) => dragEnd(result, columns, changeTable)}
         >
           {Object.entries(columns).map(([id, table]) => {
-            return <TDTable table={table} key={id} tableId={id} />;
+            return <TDTable key={id} table={table} tableId={id} />;
           })}
         </DragDropContext>
       </div>

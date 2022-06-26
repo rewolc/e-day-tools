@@ -3,7 +3,7 @@ import React from "react";
 // @ts-ignore
 import { DropResult } from "react-beautiful-dnd";
 // @ts-ignore
-import { TTables, TTask } from "../../features/todo/table-names";
+import { TTables, TTask } from "../../features/ToDo/table-names";
 // @ts-ignore
 import { Event, useStore } from "effector-react";
 
