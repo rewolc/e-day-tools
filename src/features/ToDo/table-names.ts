@@ -1,27 +1,23 @@
-import { v4 as uuid } from "uuid";
 import { createEvent, createStore } from "effector";
+import { v4 as uuid } from "uuid";
 
 const objHeader = {
+  importance: "#e1a62d",
   name: "Доделать ToDo",
   time: "1w",
-  importance: "#e1a62d",
   type: "доделать",
 };
 const tasks: TTask = [
-  { id: uuid(), header: objHeader, description: "Сделать это" },
-  { id: uuid(), header: "Second Task", description: "Сделать это" },
-  { id: uuid(), header: "Third Task", description: "Сделать это" },
-  { id: uuid(), header: "Fourth Task", description: "Сделать это" },
-  { id: uuid(), header: "Fifth Task", description: " " },
+  { description: "Сделать это", header: objHeader, id: uuid() },
+  { description: "Сделать это", header: "Second Task", id: uuid() },
+  { description: "Сделать это", header: "Third Task", id: uuid() },
+  { description: "Сделать это", header: "Fourth Task", id: uuid() },
+  { description: " ", header: "Fifth Task", id: uuid() },
 ];
 export const tables: TTables = {
   all: {
     name: "Все Задачи",
     tasks: tasks,
-  },
-  inWork: {
-    name: "В Работе",
-    tasks: [],
   },
   complete: {
     name: "Выполненные",
@@ -29,6 +25,10 @@ export const tables: TTables = {
   },
   delayed: {
     name: "Отложенные",
+    tasks: [],
+  },
+  inWork: {
+    name: "В Работе",
     tasks: [],
   },
 };
