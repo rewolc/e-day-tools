@@ -1,48 +1,38 @@
-import React, { FC } from "react";
-import { Controller, FieldValues } from "react-hook-form";
-import { Input } from "antd";
+import "./index.scss";
+import React from "react";
+import { Button, Form } from "antd";
+import { IputAdapter } from "../InputAdapter";
 
-type Props = {
-  formControl: FieldValues;
-};
-
-type InputProps = {
-  name: string;
-
-  label: string;
-  plholder: string;
-};
-export const ModalContent: FC<Props> = ({ formControl }) => {
-  const { control, ...rest } = formControl;
-
-  const CustomInput: FC<InputProps> = ({ name, label, plholder }) => (
-    <div className={`${name}_container`}>
-      <label className="label">{label}</label>
-      <Controller
-        control={control}
-        name={name}
-        render={({ field }) => (
-          <Input
-            className={`${name}_input`}
-            placeholder={plholder}
-            {...field}
-          />
-        )}
-        rules={{ required: true }}
-      />
-    </div>
-  );
+export const ModalContent = () => {
+  const [form] = Form.useForm();
 
   return (
-    <>
-      <CustomInput
-        label="Название задачи"
+    <Form className="form" form={form} name="task_form">
+      <IputAdapter
+        label="Название"
         name="taskName"
         plholder="название задачи"
+        type="input"
       />
-      <CustomInput label="Тип задачи" name="taskType" plholder="тип задачи" />
-      <CustomInput label="Время на выполнение" name="taskTime" plholder="8h" />
-      <CustomInput label="Важность задачи" name="taskImportance" plholder="" />
-    </>
+      <IputAdapter
+        label="Тип"
+        name="taskDescr"
+        plholder="тип задачи"
+        type="input"
+      />
+      <IputAdapter
+        label="Время"
+        name="taskTime"
+        plholder="время на задачу"
+        type="slider"
+      />
+      <div className="form__footer">
+        <Button type="default">Отмена</Button>
+
+        <Button htmlType="submit" type="primary">
+          Добавить
+        </Button>
+      </div>
+    </Form>
   );
 };
