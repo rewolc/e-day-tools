@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import { Draggable } from "react-beautiful-dnd";
 import "./task.scss";
+import React, { FC } from "react";
 import { Collapse } from "antd";
+import { Draggable } from "react-beautiful-dnd";
 import { THeaderTask } from "../../table-names";
 
 type Props = { task: Record<string, string | THeaderTask>; tuskInd: number };
@@ -9,7 +9,6 @@ type Props = { task: Record<string, string | THeaderTask>; tuskInd: number };
 const Task: FC<Props> = ({ task, tuskInd }) => {
   const { id, header, description } = task;
   const { name, time, importance, type } = header as THeaderTask;
-
   const CollapseHeader = () => (
     <div className="collapse">
       <div className="collapse__data">
@@ -33,14 +32,12 @@ const Task: FC<Props> = ({ task, tuskInd }) => {
       {(provided, snapshot) => {
         return (
           <div
-            className="task"
             ref={provided.innerRef}
+            className="task"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             style={{
-              backgroundColor: snapshot.isDragging
-                ? "rgb(174,192,159)"
-                : "#e7e7e7",
+              backgroundColor: snapshot.isDragging ? "#a5e4aa" : "#e7e7e7",
               userSelect: "none",
               ...provided.draggableProps.style,
             }}

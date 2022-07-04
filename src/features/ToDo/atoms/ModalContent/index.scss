@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+
+  &__footer {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 20px;
+
+    &:nth-child(1n) {
+      margin-left: auto;
+    }
+  }
+}

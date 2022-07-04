@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import Header from "./features/header/header";
 import "./App.scss";
+import Header from "./features/Header/header";
 import Main from "./pages/main/main";
+import React, { FC } from "react";
 import ToDo from "./pages/todo";
 import { Route, Routes } from "react-router-dom";
 
@@ -9,9 +9,9 @@ const App: FC = () => {
   return (
     <div className="container">
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route element={<Header />} path="/">
           <Route index element={<Main />} />
-          <Route path="/todo" element={<ToDo />} />
+          <Route element={<ToDo />} path="/todo" />
         </Route>
       </Routes>
     </div>

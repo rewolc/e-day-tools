@@ -1,7 +1,7 @@
 import "./auth";
 import React, { FC } from "react";
-import { UserOutlined } from "@ant-design/icons";
 import { IconStyles } from "../../../../antdStyles/iconStyles";
+import { UserOutlined } from "@ant-design/icons";
 
 export const AuthInHeader: FC = () => {
   return (

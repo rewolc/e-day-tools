@@ -3,15 +3,14 @@ import React from "react";
 // @ts-ignore
 import { DropResult } from "react-beautiful-dnd";
 // @ts-ignore
-import { TTables, TTask } from "../../features/todo/table-names";
+import { TTables, TTask } from "../../features/ToDo/table-names";
 // @ts-ignore
+import { Event, useStore } from "effector-react";
+
 export const dragEnd = (
   result: DropResult,
   columns: TTables,
-  setColumns: {
-    (value: React.SetStateAction<TTables>): void;
-    (arg0: any): void;
-  }
+  changeTable: Event<void>
 ) => {
   if (!result.destination) return;
   const { source, destination } = result;
@@ -22,7 +21,7 @@ export const dragEnd = (
     const newColumnTasks = [...(newColumn.tasks as TTask)];
     const [removed] = lastColumnTasks.splice(source.index, 1);
     newColumnTasks.splice(destination.index, 0, removed);
-    setColumns({
+    changeTable({
       ...columns,
       [source.droppableId]: {
         ...lastColumn,
@@ -38,7 +37,7 @@ export const dragEnd = (
     const allItems = [...(column.tasks as TTask)];
     const [removed] = allItems.splice(source.index, 1);
     allItems.splice(destination.index, 0, removed);
-    setColumns({
+    changeTable({
       ...columns,
       [source.droppableId]: {
         ...column,

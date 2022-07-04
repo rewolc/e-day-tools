@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { createEvent, createStore } from "effector";
 
 const objHeader = {
   name: "Доделать ToDo",
@@ -8,10 +9,10 @@ const objHeader = {
 };
 const tasks: TTask = [
   { id: uuid(), header: objHeader, description: "Сделать это" },
-  { id: uuid(), header: "Second task", description: "Сделать это" },
-  { id: uuid(), header: "Third task", description: "Сделать это" },
-  { id: uuid(), header: "Fourth task", description: "Сделать это" },
-  { id: uuid(), header: "Fifth task", description: " " },
+  { id: uuid(), header: "Second Task", description: "Сделать это" },
+  { id: uuid(), header: "Third Task", description: "Сделать это" },
+  { id: uuid(), header: "Fourth Task", description: "Сделать это" },
+  { id: uuid(), header: "Fifth Task", description: " " },
 ];
 export const tables: TTables = {
   all: {
@@ -32,12 +33,13 @@ export const tables: TTables = {
   },
 };
 
-export type THeaderTask = {
-  name: string;
-  time: string;
-  importance: string;
-  type: string;
-};
+export type THeaderTask = Record<string, string>;
 export type TTask = Array<Record<string, string | THeaderTask>>;
 export type TTables = Record<string, TTable>;
 export type TTable = Record<string, string | TTask>;
+
+export const changeTable = createEvent();
+export const todoTables = createStore<TTables>(tables).on(
+  changeTable,
+  (_, newState) => newState
+);

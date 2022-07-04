@@ -1,8 +1,8 @@
+import AnimatedNumber from "./animated/number";
 import React, { FC, useEffect, useState } from "react";
 import getHours from "date-fns/getHours";
 import getMinutes from "date-fns/getMinutes";
 import { timeType } from "./timeType";
-import AnimatedNumber from "./animated/number";
 
 const TimeInHeader: FC = () => {
   const [time, updateTime] = useState<timeType>({

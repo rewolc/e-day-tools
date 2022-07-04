@@ -1,8 +1,8 @@
 import "./table.scss";
 import React, { FC } from "react";
-import { TTable, TTask } from "../../table-names";
-import Task from "../task/task";
+import Task from "../Task/task";
 import { Droppable } from "react-beautiful-dnd";
+import { TTable, TTask } from "../../table-names";
 
 type Props = { table: TTable; tableId: string };
 
@@ -12,7 +12,7 @@ const TDTable: FC<Props> = ({ table, tableId }) => {
   return (
     <div className="table">
       <div className="table__name">{name as String}</div>
-      <Droppable droppableId={tableId} key={tableId}>
+      <Droppable key={tableId} droppableId={tableId}>
         {(provided, snapshot) => {
           return (
             <div
