@@ -20,16 +20,15 @@ export const ModalContent = () => {
         plholder="тип задачи"
         type="input"
       />
-      <IputAdapter
-        label="Время"
-        name="taskTime"
-        plholder="время на задачу"
-        type="slider"
-      />
+      <IputAdapter form={form} label="Время" name="taskTime" type="slider" />
       <div className="form__footer">
         <Button type="default">Отмена</Button>
 
-        <Button htmlType="submit" type="primary">
+        <Button
+          htmlType="submit"
+          onClick={() => console.log(form.getFieldsValue().taskTime + 33)}
+          type="primary"
+        >
           Добавить
         </Button>
       </div>
