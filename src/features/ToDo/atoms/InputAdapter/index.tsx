@@ -1,16 +1,18 @@
 import "./index.scss";
 import React, { FC } from "react";
-import { Form, Input, Slider } from "antd";
+import { CustomnSlider } from "../CustomSlider";
+import { Form, Input } from "antd";
 import { inputNames } from "./utils";
 
 type IputAdapterProps = {
+  form?: any;
   label: string;
   name: string;
-  plholder: string;
+  plholder?: string;
   type: string;
 };
 
-type CustomnInput = Omit<IputAdapterProps, "label" | "type">;
+export type CustomnInput = Omit<IputAdapterProps, "label" | "type">;
 
 export const CustomnInput: FC<CustomnInput> = ({ name, plholder }) => {
   const inputStyle = {
@@ -25,7 +27,7 @@ export const CustomnInput: FC<CustomnInput> = ({ name, plholder }) => {
       name={name}
       rules={[
         {
-          message: "Это обязательное поле",
+          message: "Обязательное поле",
           required: true,
         },
       ]}
@@ -35,60 +37,8 @@ export const CustomnInput: FC<CustomnInput> = ({ name, plholder }) => {
   );
 };
 
-export const CustomnSlider: FC<CustomnInput> = ({ name, plholder }) => {
-  const inputStyle = {
-    wrapperCol: {
-      span: 10,
-    },
-  };
-
-  return (
-    <Form.Item
-      name={name}
-      rules={[
-        {
-          message: "Время должно быть больше 0",
-          required: true,
-        },
-      ]}
-    >
-      <Slider
-        handleStyle={{ borderColor: "rgba(19, 185, 32, 0.37)" }}
-        marks={{
-          0: "0d",
-          24: "1d",
-          48: "2d",
-          72: "3d",
-          96: "4d",
-          120: "5d",
-          144: "6d",
-          168: "7d",
-        }}
-        max={168}
-      />
-      <Form.Item
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around",
-          textAlign: "center",
-        }}
-        {...inputStyle}
-        name={name}
-      >
-        <Input
-          maxLength={30}
-          placeholder={plholder}
-          style={{
-            textAlign: "center",
-          }}
-        />
-      </Form.Item>
-    </Form.Item>
-  );
-};
-
 export const IputAdapter: FC<IputAdapterProps> = ({
+  form,
   name,
   label,
   plholder,
@@ -101,7 +51,10 @@ export const IputAdapter: FC<IputAdapterProps> = ({
         <CustomnInput name={name} plholder={plholder} />
       )}
       {inputNames[type] === "slider" && (
-        <CustomnSlider name={name} plholder={plholder}></CustomnSlider>
+        <CustomnSlider form={form} name={name}></CustomnSlider>
+      )}
+      {inputNames[type] === "select" && (
+        <CustomnSlider form={form} name={name}></CustomnSlider>
       )}
     </div>
   );
