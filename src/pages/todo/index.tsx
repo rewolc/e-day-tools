@@ -3,12 +3,12 @@ import React, { FC } from "react";
 import TDTable from "../../features/ToDo/atoms/Table/table";
 import { AddTask } from "../../features/ToDo/atoms/AddTask/add-task";
 import { DragDropContext } from "react-beautiful-dnd";
-import { changeTable, todoTables } from "../../features/ToDo/table-names";
+import { changeTable, dataTables } from "../../features/ToDo/table-names";
 import { dragEnd } from "./utils";
 import { useStore } from "effector-react";
 
 const ToDo: FC = () => {
-  const columns = useStore(todoTables);
+  const columns = useStore(dataTables);
 
   return (
     <div className="main">

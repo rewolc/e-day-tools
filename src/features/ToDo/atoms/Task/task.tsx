@@ -3,25 +3,27 @@ import React, { FC } from "react";
 import { Collapse } from "antd";
 import { Draggable } from "react-beautiful-dnd";
 import { THeaderTask } from "../../table-names";
+import { importantNames } from "./utils";
 
 type Props = { task: Record<string, string | THeaderTask>; tuskInd: number };
 
 const Task: FC<Props> = ({ task, tuskInd }) => {
   const { id, header, description } = task;
-  const { name, time, importance, type } = header as THeaderTask;
+  const { taskName, taskTime, taskImportance, taskDescr } =
+    header as THeaderTask;
   const CollapseHeader = () => (
     <div className="collapse">
       <div className="collapse__data">
         <div className="collapse__data__name">
-          {typeof header === "string" ? header : name}
+          {typeof header === "string" ? header : taskName}
         </div>
-        <div className="collapse__data__type">{type}</div>
+        <div className="collapse__data__type">{taskDescr}</div>
       </div>
       <div className="collapse__duration">
-        <div className="collapse__duration__time">{time}</div>
+        <div className="collapse__duration__time">{taskTime}</div>
         <div
           className="collapse__duration__importance"
-          style={{ backgroundColor: `${importance}` }}
+          style={{ backgroundColor: importantNames[taskImportance] }}
         ></div>
       </div>
     </div>

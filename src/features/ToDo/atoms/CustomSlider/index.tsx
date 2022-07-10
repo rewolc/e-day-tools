@@ -1,20 +1,20 @@
 import "./index.scss";
 import React, { FC, useState } from "react";
-import { CustomnInput } from "../InputAdapter";
+import { CustomInputProps } from "../InputAdapter";
 import { Form, Slider } from "antd";
 
-export const CustomnSlider: FC<CustomnInput> = ({ name, form }) => {
+export const CustomnSlider: FC<CustomInputProps> = ({ name, form }) => {
   //  TODO сделать инпут для ввода времени
   const [timeValue, setTimeValue] = useState<string | undefined>("0h");
 
   const sliderFormatter = (value: number) => {
-    if (form?.getFieldsValue().taskTime < 24) {
+    if (value < 24) {
       return value + "h";
     } else {
       const hours = value % 24;
       const days = (value - hours) / 24;
 
-      return `${days}d ${hours}h`;
+      return !hours ? `${days}d` : `${days}d ${hours}h`;
     }
   };
 

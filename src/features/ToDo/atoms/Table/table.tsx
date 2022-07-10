@@ -25,7 +25,7 @@ const TDTable: FC<Props> = ({ table, tableId }) => {
                   : "rgb(255 255 255)",
               }}
             >
-              {(tasks as TTask).map((task, indx) => (
+              {(tasks as TTask)?.map((task, indx) => (
                 <Task key={indx} task={task} tuskInd={indx} />
               ))}
               {provided.placeholder}
