@@ -1,7 +1,7 @@
-const inputVariations = { input: "input", select: "select", slider: "slider" };
+const inputVariations = { input: "input", radio: "radio", slider: "slider" };
 
 export const inputNames = {
   [inputVariations.input]: "input",
   [inputVariations.slider]: "slider",
-  [inputVariations.select]: "select",
+  [inputVariations.radio]: "radio",
 };

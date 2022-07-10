@@ -1,10 +1,10 @@
-import "./table.scss";
+import "./index.scss";
 import React, { FC } from "react";
-import Task from "../Task/task";
+import Task from "../Task";
+import { ColumnT, TasksT } from "../../table-names";
 import { Droppable } from "react-beautiful-dnd";
-import { TTable, TTask } from "../../table-names";
 
-type Props = { table: TTable; tableId: string };
+type Props = { table: ColumnT; tableId: string };
 
 const TDTable: FC<Props> = ({ table, tableId }) => {
   const { name, tasks } = table;
@@ -25,8 +25,8 @@ const TDTable: FC<Props> = ({ table, tableId }) => {
                   : "rgb(255 255 255)",
               }}
             >
-              {(tasks as TTask).map((task, indx) => (
-                <Task key={indx} task={task} tuskInd={indx} />
+              {(tasks as TasksT)?.map((task, indx) => (
+                <Task key={indx} tableId={tableId} task={task} tuskInd={indx} />
               ))}
               {provided.placeholder}
             </div>

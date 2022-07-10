@@ -1,0 +1,57 @@
+.ant-input {
+  border: 1px solid #e9eaed;
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    border-color: #50ea5a;
+  }
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 5px;
+  border: 1px solid #e9eaed;
+  color: #81e125;
+  font-size: 14px;
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: rgba(19, 185, 32, 0.37);
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+  color: black;
+
+  &:hover,
+  &:focus {
+    border-color: rgb(19 185 32 / 70%);
+  }
+}
+
+
+.ant-form-item {
+  margin-bottom: 10px;
+}
+
+.ant-slider-track {
+  background-color: rgba(19, 185, 32, 0.37);
+
+  &:hover,
+  &:focus {
+    background-color: rgb(19 185 32 / 70%);
+  }
+}
+
+.ant-slider {
+  &:hover,
+  &:focus {
+    .ant-slider-track {
+      background-color: rgba(75, 211, 85, 0.68);
+    }
+  }
+}
+
+.ant-slider-dot-active {
+  border-color: rgba(75, 211, 85, 0.68);
+}
+
