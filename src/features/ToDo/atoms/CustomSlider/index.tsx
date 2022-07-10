@@ -2,21 +2,11 @@ import "./index.scss";
 import React, { FC, useState } from "react";
 import { CustomInputProps } from "../InputAdapter";
 import { Form, Slider } from "antd";
+import { sliderFormatter } from "./utils";
 
 export const CustomnSlider: FC<CustomInputProps> = ({ name, form }) => {
   //  TODO сделать инпут для ввода времени
   const [timeValue, setTimeValue] = useState<string | undefined>("0h");
-
-  const sliderFormatter = (value: number) => {
-    if (value < 24) {
-      return value + "h";
-    } else {
-      const hours = value % 24;
-      const days = (value - hours) / 24;
-
-      return !hours ? `${days}d` : `${days}d ${hours}h`;
-    }
-  };
 
   const onSliderChange = () => {
     setTimeValue(sliderFormatter(form.getFieldsValue().taskTime));
@@ -29,10 +19,8 @@ export const CustomnSlider: FC<CustomInputProps> = ({ name, form }) => {
         name={name}
         rules={[
           {
-            validator: (_, value) =>
-              value !== 0
-                ? Promise.resolve()
-                : Promise.reject(new Error("Время должно быть больше 0")),
+            message: "Время должно быть больше 0",
+            required: true,
           },
         ]}
       >

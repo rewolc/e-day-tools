@@ -1,45 +1,31 @@
 import { createEvent, createStore } from "effector";
-import { v4 as uuid } from "uuid";
 
-type TaskHeaderT = {
+export type TaskHeaderT = {
   taskName: string;
-  taskDescr: string;
+  taskType: string;
   taskTime: string;
   taskImportance: string;
 };
 
-type TaskT = {
+export type TaskT = {
   id: string;
   header: TaskHeaderT;
   description: string;
 };
-type ColumnT = {
+export type TasksT = TaskT[];
+export type ColumnT = {
   name: string;
-  tasks: TaskT[];
+  tasks: TasksT;
 };
-type TableT = {
-  all: ColumnT;
-  complete: ColumnT;
-  delayed: ColumnT;
-  inWork: ColumnT;
-};
+export type TableT = Record<string, ColumnT>;
 
-const objHeader = {
-  importance: "#e1a62d",
-  name: "Доделать ToDo",
-  time: "1w",
-  type: "доделать",
-};
-const tasks: TTask = [
-  { description: "Сделать это", header: objHeader, id: uuid() },
-  { description: "Сделать это", header: "Second Task", id: uuid() },
-  { description: "Сделать это", header: "Third Task", id: uuid() },
-  { description: "Сделать это", header: "Fourth Task", id: uuid() },
-  { description: " ", header: "Fifth Task", id: uuid() },
-];
 export const tables: TableT = {
   all: {
     name: "Все Задачи",
+    tasks: [],
+  },
+  inWork: {
+    name: "В Работе",
     tasks: [],
   },
   complete: {
@@ -50,31 +36,19 @@ export const tables: TableT = {
     name: "Отложенные",
     tasks: [],
   },
-  inWork: {
-    name: "В Работе",
-    tasks: [],
-  },
 };
 
-export type THeaderTask = Record<string, string>;
-export type TTask = Record<string, string | THeaderTask>[];
-export type TTable = Record<string, string | TTask>;
-export type TTables = Record<string, TTable>;
-
 export const changeTable = createEvent();
-export const addTask = createEvent("добавление задачи");
-export const dataTables = createStore<TTables>(tables)
+export const addTask = createEvent<TaskT>("добавление задачи");
+export const dataTables = createStore<TableT>(tables)
   .on(changeTable, (_, newState) => newState)
   .on(addTask, (state, newTask) => {
     return {
       ...state,
       all: {
         ...state.all,
-        tasks: [
-          // @ts-ignore
-          ...state.all.tasks,
-          { description: "Сделать это", header: newTask, id: uuid() },
-        ],
+        tasks: [...state.all.tasks, { ...newTask }],
       },
-    };
+    } as TableT;
   });
+

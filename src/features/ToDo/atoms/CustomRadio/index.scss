@@ -3,6 +3,12 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+
+}
+
+.ant-form-item-explain-error {
+  text-align: center;
 }
 
 .little_color {
@@ -71,7 +77,7 @@
 }
 
 .ant-radio-button-wrapper:not(:first-child)::before {
-  width: 0px;
+  width: 0;
 }
 
 .ant-radio-button-wrapper {

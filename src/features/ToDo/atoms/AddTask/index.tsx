@@ -1,9 +1,9 @@
-import "./add-task.scss";
+import "./index.scss";
 import React, { FC, useState } from "react";
 import { Button, Modal } from "antd";
 import { ModalContent } from "../ModalContent";
 
-export const AddTask: FC = () => {
+export const Task: FC = () => {
   const [isVisible, setVisible] = useState(false);
   const changeVisible = () => setVisible(!isVisible);
 
@@ -22,7 +22,7 @@ export const AddTask: FC = () => {
         title={<div className="title">Введите информацию о задаче</div>}
         visible={isVisible}
       >
-        <ModalContent />
+        <ModalContent changeVisible={changeVisible} />
       </Modal>
     </div>
   );

@@ -15,6 +15,7 @@ type InputAdapterProps = {
   type: string;
   centered?: boolean;
   popover?: boolean;
+  isTextArea?: boolean;
 };
 
 export type CustomInputProps = Omit<InputAdapterProps, "label" | "type">;
@@ -28,6 +29,7 @@ export const InputAdapter: FC<InputAdapterProps> = ({
   plholder,
   type,
   separated = false,
+  isTextArea = false,
 }) => {
   return (
     <div className="input">
@@ -36,7 +38,7 @@ export const InputAdapter: FC<InputAdapterProps> = ({
           centered ? "input__centered" : ""
         }`}
       >
-        {label}{" "}
+        {label}
         {popover && (
           <Popover content={"sadas"} trigger="hover">
             <p className="input__label__question">?</p>
@@ -44,7 +46,7 @@ export const InputAdapter: FC<InputAdapterProps> = ({
         )}
       </label>
       {inputNames[type] === "input" && (
-        <CustomnInput name={name} plholder={plholder} />
+        <CustomnInput isTextArea={isTextArea} name={name} plholder={plholder} />
       )}
       {inputNames[type] === "slider" && (
         <CustomnSlider form={form} name={name} />
